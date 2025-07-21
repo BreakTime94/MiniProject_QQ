@@ -6,7 +6,7 @@
   키오스크 개발
 - 프로젝트 기간 : 250428 ~ 250514
 - 프로젝트 수행 인원 : 4인 
-- 활용 프로그램 : ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
+- 활용 언어 : ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
 - 맡은 역할 : 주문, 결제 파트
 ---
 ### 📅 250719 
