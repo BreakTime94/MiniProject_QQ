@@ -10,16 +10,16 @@ public class Order {
 	private Date date = new Date();
 	private boolean pay; // false 주문만 true 결제완료 상태
 	private int sales;
-	
+
 	public Order() {
 	}
-	
+
 	public Order(Customer customer, List<Cart> cart, int sales) {
 		this.customer = customer;
 		this.cart = cart;
 		this.sales = sales;
 	}
-	
+
 	public Order(int num, Customer customer, List<Cart> cart, int sales, Date date) {
 		this.num = num;
 		this.customer = customer;
@@ -67,7 +67,7 @@ public class Order {
 	public void setSales(int sales) {
 		this.sales = sales;
 	}
-		
+
 	public int getNum() {
 		return num;
 	}
@@ -77,6 +77,6 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "주문내역 " + "주문 번호 : " + num +  ", 손님 정보 : " + customer.getId() + ", 주문내역 : " + cart + ", 결제 금액 : " + sales +  "원, 결제 시간 : " + date;
+		return "주문 번호 : " + num +  ", 손님 정보 : " + customer.getId() + ", 주문상품 : " + cart + ", 결제 금액 : " + sales +  "원, 결제 시간 : " + date;
 	}
 }

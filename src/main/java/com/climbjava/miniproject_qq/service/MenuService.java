@@ -1,15 +1,14 @@
 package com.climbjava.miniproject_qq.service;
 
 import com.climbjava.miniproject_qq.domain.Menu;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.*;
-
+@Service
 public class MenuService {
 		
-	
-		
-	
+
 	// 싱글톤 (MENU_SERVICE 라는 이름의 객체를 클래스 안에서 딱 한 번 만들고, 나중에 getInstance()로 꺼내쓰기위해 사용함)
 	private static final MenuService MENU_SERVICE = new MenuService();
 	private Scanner sc = new Scanner(System.in);

@@ -2,7 +2,7 @@ package com.climbjava.miniproject_qq.domain;
 
 public class Cart extends Menu{
 	private int amount;
-	
+
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
@@ -25,5 +25,5 @@ public class Cart extends Menu{
 		return " 메뉴번호 : " + getNo()  + ", 메뉴명 : " + getName() +  ", 가격 = " + getPrice() + "원, " + amount + "개, " + "소계 = " + getPrice() * amount + "원" ;
 	}
 
-	
+
 }

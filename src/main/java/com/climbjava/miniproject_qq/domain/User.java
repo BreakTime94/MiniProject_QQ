@@ -6,12 +6,12 @@ public abstract class User {
 	private String name; 	// 회원 이름
 	private String id;		// 회원 ID
 	private String pw;		// 회원 PW
-	
+
 	//-----------------생성자
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public User(int userNo, String name, String id, String pw) {
 		this.userNo = userNo;
 		this.name = name;
@@ -44,13 +44,13 @@ public abstract class User {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
-	
+
+
 	//-----------------투스트링 
 	@Override
 	public String toString() {
 		return "[회원번호 : " + userNo + " ], [이름 : " + name + " ], [ID : " + id + " ], [PW : " + pw + " ]";
 	}
 
-	
+
 }
