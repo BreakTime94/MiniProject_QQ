@@ -1,4 +1,4 @@
-package com.climbjava.miniproject_qq.main;
+package com.climbjava.miniproject_qq.ui;
 
 import static com.climbjava.miniproject_qq.utils.QqUtils.nextInt;
 
@@ -7,15 +7,14 @@ import com.climbjava.miniproject_qq.service.AdminService;
 import com.climbjava.miniproject_qq.service.CustomerService;
 import com.climbjava.miniproject_qq.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
 public class Main {
   UserService us;
-  CustomerService cs;
-  AdminService as;
+  AdminUI au;
+  CustomerUI cu;
 
   public void init() throws Exception {
     while(true) {
@@ -32,9 +31,9 @@ public class Main {
               break;
           }
         } else if(us.getLoginUser() instanceof Admin){
-          as.adminInit(); // Login Admin
+          au.adminInit(); // Login Admin
         } else {
-          cs.init(); // Login Customer
+          cu.init(); // Login Customer
         }
       }	catch (NumberFormatException e) {
         System.out.println("정확한 숫자를 입력하세요");

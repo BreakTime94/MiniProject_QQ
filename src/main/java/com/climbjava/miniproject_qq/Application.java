@@ -1,6 +1,6 @@
 package com.climbjava.miniproject_qq;
 
-import com.climbjava.miniproject_qq.main.Main;
+import com.climbjava.miniproject_qq.ui.Main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

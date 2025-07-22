@@ -15,36 +15,36 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
-
 	private UserService cu; //
-	private MenuService mu ;
-	private User loginCustomer;
+	private MenuService ms ;
+
+	//private User loginCustomer;
 	@Autowired
-	public OrderService(UserService cu, MenuService mu) {
+	public OrderService(UserService cu, MenuService ms) {
 		this.cu = cu;
-		this.mu = mu;
-		loginCustomer = cu.getLoginUser();
+		this.ms = ms;
 		init();
 	}
+	private int num;
 
 	private List<Order> orders = new ArrayList<Order>(); // 주문 내역 집합
 	private List<Cart> carts = new ArrayList<>(); // 장바구니
 	private List<Menu> menus = new ArrayList<>(); //메뉴판 목록
-	private int num;
+
 
 	public void init() {
 		List<Cart> l = new ArrayList<>();
-		l.add(new Cart(mu.findBy(1), 2));
+		l.add(new Cart(ms.findBy(1), 2));
 		Calendar cal = Calendar.getInstance();
 		cal.set(2025, Calendar.MAY, 1, 18, 30);
 		Date d = cal.getTime();
-		orders.add(new Order(++num, (Customer)cu.findByID("guest1"), l, mu.findBy(1).getPrice() * 2, d));
+		orders.add(new Order(++num, (Customer)cu.findByID("guest1"), l, ms.findBy(1).getPrice() * 2, d));
 		l = new ArrayList<Cart>();
-		l.add(new Cart(mu.findBy(4), 1));
-		l.add(new Cart(mu.findBy(11), 2));
+		l.add(new Cart(ms.findBy(4), 1));
+		l.add(new Cart(ms.findBy(11), 2));
 		cal.set(2025, Calendar.MARCH, 25, 20, 20);
 		d = cal.getTime();
-		orders.add(new Order(++num, (Customer)cu.findByID("guest2"), l, (mu.findBy(4).getPrice() * 1 + mu.findBy(11).getPrice() *  2) , d));
+		orders.add(new Order(++num, (Customer)cu.findByID("guest2"), l, (ms.findBy(4).getPrice() * 1 + ms.findBy(11).getPrice() *  2) , d));
 		l = new ArrayList<Cart>();
 	}
 
@@ -69,11 +69,11 @@ public class OrderService {
 	// 주문하기 (장바구니 담기)
 	public void getItem() {
 		while(true) {
-			MenuService.getInstance().read();
+			ms.read();
 			// 상품 번호를 입력받고
 			int no = QqUtils.nextInt("주문하실 메뉴 번호를 입력하세요 > ");
 			checkRangeMenu(no);
-			Menu m = MenuService.getInstance().findBy(no); // 숫자 번호는 1번부터
+			Menu m = ms.findBy(no); // 숫자 번호는 1번부터
 			if(m == null) {
 				System.out.println("올바른 메뉴번호를 입력하여주세요.");
 				break;
@@ -128,6 +128,7 @@ public class OrderService {
 
 	//결제하기
 	public void pay() {
+		User loginCustomer = cu.getLoginUser();
 		System.out.println("주문하신 메뉴는 " + carts + " 입니다.");
 		int sales = 0;
 		for(Cart c : carts) {
@@ -156,6 +157,7 @@ public class OrderService {
 
 	// 결제 조회, 관리자/손님 페이지에서 조회 관리자 -> 매출 조회, 손님 -> 누적 소비금액 및 쿠폰 관련
 	public List<Order> findByPayment(User u) { //loginCustomer의 주문금액 조회 관리자페이지에서 손님 리스트에 손님객체 대입
+		User loginCustomer = cu.getLoginUser();
 		//손님 한 명당 가지고 있는 주문 수는 여러개 일 수 있으므로 리스트 타입으로 반환
 		List<Order> tmp = new ArrayList<Order>();
 		for (Order o : orders) {

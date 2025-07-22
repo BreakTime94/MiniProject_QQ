@@ -7,21 +7,10 @@ import java.util.Collections;
 import java.util.*;
 @Service
 public class MenuService {
-		
 
 	// 싱글톤 (MENU_SERVICE 라는 이름의 객체를 클래스 안에서 딱 한 번 만들고, 나중에 getInstance()로 꺼내쓰기위해 사용함)
-	private static final MenuService MENU_SERVICE = new MenuService();
 	private Scanner sc = new Scanner(System.in);
-	
-	//메뉴리스트생성
-//	private List<Menu> sortedMenus;
-	
-	// MenuService생성자
-	private MenuService() {	}
-	public static MenuService getInstance() {
-		return MENU_SERVICE;//이 메서드를 통해 다른 클래스에서도 MenuService를 사용할 수있다
-		 
-	}
+
 	//메뉴를 저장할 ArrayList
 //메뉴는 Menu 객체로 구성돼 있음(메뉴 번호, 이름, 카테고리, 가격)
 	private List<Menu> menus = new ArrayList<Menu>();
@@ -220,49 +209,6 @@ public class MenuService {
 
 	    System.out.println("선택한 메뉴들의 총합: " + totalPrice + "원");
 	}
-
-	
-	// 메서드기능 테스트
-    public static void main(String[] args) {
-        MenuService menuService = MenuService.getInstance();
-        
-        Scanner scanner = new Scanner(System.in); 
-        while (true) {
-            System.out.println("===== 메뉴 서비스 =====");
-            System.out.println("1. 메뉴 등록");
-            System.out.println("2. 메뉴 조회");
-            System.out.println("3. 메뉴 수정");
-            System.out.println("4. 메뉴 삭제");
-            System.out.println("5. 메뉴 가격합산");
-            System.out.println("6. 메뉴 가격범위로 검색");
-            System.out.println("7. 종료");
-            System.out.print("선택 > ");
-            
-            int choice = Integer.parseInt(scanner.nextLine());
-            
-            switch (choice) {
-                case 1:
-                    menuService.register(); // 메뉴 등록
-                    break;
-                case 2:
-                    menuService.read(); // 메뉴 조회
-                    break;
-                case 3:
-                	menuService.modify();//메뉴수정
-                case 4:
-                	menuService.remove(); //메뉴삭제
-                case 5:
-                	menuService.totalMenuPrice();
-                case 6:
-                	menuService.PriceRange();
-                case 7:
-                    System.out.println("프로그램 종료.");
-                    return; 
-                default:
-                    System.out.println("잘못된 입력입니다.");
-            }
-        }
-    }
 }
 
    
